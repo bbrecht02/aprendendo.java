@@ -1,5 +1,7 @@
 package com.bbrecht.todoList;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -18,11 +20,6 @@ public class TodoController {
     private TodoRepo todoRepo;
 
 
-    @GetMapping
-    public List<Todo> findAll() {
-        return todoRepo.findAll();
-    }
-
     @PostMapping
     public Todo save(@RequestBody Todo todo) {
         return todoRepo.save(todo);
@@ -32,6 +29,17 @@ public class TodoController {
     @PutMapping
     public Todo update(@RequestBody Todo todo) {
         return todoRepo.save(todo);
+    }
+
+    @GetMapping
+    public List<Todo> findAll() {
+        return todoRepo.findAll();
+    }
+
+    @DeleteMapping
+    public String deleteTodo() {
+        todoRepo.deleteAll();
+        return "Deleted";
     }
 
 }

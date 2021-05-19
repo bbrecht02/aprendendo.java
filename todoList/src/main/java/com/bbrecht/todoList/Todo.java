@@ -7,6 +7,8 @@ import javax.persistence.Id;
 @Entity
 public class Todo {
 
+    @Id
+    @GeneratedValue
     private long id;
     private String titulo;
     private boolean done;
@@ -26,8 +28,6 @@ public class Todo {
         this.done = done;
     }
 
-    @Id
-    @GeneratedValue
     public long getId() {
         return id;
     }
@@ -43,5 +43,4 @@ public class Todo {
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
-
 }
